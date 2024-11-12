@@ -1,4 +1,3 @@
-// AdminDashboard.js
 import React from 'react';
 import { 
   CreditCard,
@@ -8,10 +7,11 @@ import {
   DollarSign,
   Clock,
   Activity,
-  Star
+  Star,
+  Gavel
 } from 'lucide-react';
 
-const AdminDashboard = ({ isDarkMode }) => {
+const Dashboard = ({ isDarkMode }) => { // Renamed from AdminDashboard to match import
   const stats = [
     { label: 'Total Revenue', value: '$284,392.00', icon: DollarSign, change: '+12.5%' },
     { label: 'Active Auctions', value: '24', icon: Gavel, change: '+4.3%' },
@@ -28,7 +28,22 @@ const AdminDashboard = ({ isDarkMode }) => {
       product: 'Natural Blue Sapphire',
       date: '2 hours ago'
     },
-    // Add more transactions...
+    {
+      id: 2,
+      customer: 'Jane Smith',
+      amount: '$8,999',
+      status: 'Pending',
+      product: 'Ruby Ring',
+      date: '3 hours ago'
+    },
+    {
+      id: 3,
+      customer: 'Mike Johnson',
+      amount: '$15,799',
+      status: 'Completed',
+      product: 'Diamond Necklace',
+      date: '5 hours ago'
+    }
   ];
 
   const upcomingAuctions = [
@@ -39,17 +54,30 @@ const AdminDashboard = ({ isDarkMode }) => {
       lots: 86,
       registeredBidders: 142
     },
-    // Add more auctions...
+    {
+      id: 2,
+      title: 'Rare Sapphire Collection',
+      startDate: 'Mar 20, 2024',
+      lots: 54,
+      registeredBidders: 98
+    },
+    {
+      id: 3,
+      title: 'Antique Emerald Sets',
+      startDate: 'Mar 25, 2024',
+      lots: 72,
+      registeredBidders: 115
+    }
   ];
 
   return (
-    <div className="flex-1 p-8 ml-64">
+    <div className="p-8"> {/* Removed ml-64 as it should be handled by layout */}
       <div className="max-w-7xl mx-auto">
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {stats.map((stat) => (
             <div key={stat.label} className={`${
-              isDarkMode ? 'bg-slate-800/50' : 'bg-white'
+              isDarkMode ? 'bg-slate-800/50' : 'bg-white shadow-lg'
             } rounded-xl p-6`}>
               <div className="flex items-center justify-between">
                 <div>
@@ -83,7 +111,7 @@ const AdminDashboard = ({ isDarkMode }) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Recent Transactions */}
           <div className={`${
-            isDarkMode ? 'bg-slate-800/50' : 'bg-white'
+            isDarkMode ? 'bg-slate-800/50' : 'bg-white shadow-lg'
           } rounded-xl p-6`}>
             <h2 className={`text-xl font-semibold mb-6 ${
               isDarkMode ? 'text-white' : 'text-gray-900'
@@ -116,7 +144,7 @@ const AdminDashboard = ({ isDarkMode }) => {
 
           {/* Upcoming Auctions */}
           <div className={`${
-            isDarkMode ? 'bg-slate-800/50' : 'bg-white'
+            isDarkMode ? 'bg-slate-800/50' : 'bg-white shadow-lg'
           } rounded-xl p-6`}>
             <h2 className={`text-xl font-semibold mb-6 ${
               isDarkMode ? 'text-white' : 'text-gray-900'
@@ -161,3 +189,5 @@ const AdminDashboard = ({ isDarkMode }) => {
     </div>
   );
 };
+
+export default Dashboard;

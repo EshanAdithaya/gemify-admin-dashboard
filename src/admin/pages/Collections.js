@@ -10,7 +10,7 @@ import {
   CheckCircle
 } from 'lucide-react';
 
-const CollectionManager = ({ isDarkMode }) => {
+const Collections = ({ isDarkMode }) => {
   const [items, setItems] = useState([]);
   const [isAddingNew, setIsAddingNew] = useState(false);
 
@@ -101,112 +101,114 @@ const CollectionManager = ({ isDarkMode }) => {
                     }`}>{field.label}</label>
                     {field.type === 'select' ? (
                       <select className={`w-full rounded-lg px-4 py-2 ${
-                        isDarkModeisDarkMode 
-                        ? 'bg-slate-700 text-white border-slate-600' 
-                        : 'bg-white text-gray-900 border-gray-200'
-                    } border rounded-lg focus:ring-2 focus:ring-purple-500`}>
-                      {field.options.map((option) => (
-                        <option key={option} value={option}>{option}</option>
-                      ))}
-                    </select>
-                  ) : field.type === 'textarea' ? (
-                    <textarea 
-                      className={`w-full rounded-lg px-4 py-2 ${
                         isDarkMode 
                           ? 'bg-slate-700 text-white border-slate-600' 
                           : 'bg-white text-gray-900 border-gray-200'
-                      } border rounded-lg focus:ring-2 focus:ring-purple-500`}
-                      rows={4}
-                    />
-                  ) : (
-                    <input
-                      type={field.type}
-                      className={`w-full rounded-lg px-4 py-2 ${
-                        isDarkMode 
-                          ? 'bg-slate-700 text-white border-slate-600' 
-                          : 'bg-white text-gray-900 border-gray-200'
-                      } border rounded-lg focus:ring-2 focus:ring-purple-500`}
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
+                      } border rounded-lg focus:ring-2 focus:ring-purple-500`}>
+                        {field.options.map((option) => (
+                          <option key={option} value={option}>{option}</option>
+                        ))}
+                      </select>
+                    ) : field.type === 'textarea' ? (
+                      <textarea 
+                        className={`w-full rounded-lg px-4 py-2 ${
+                          isDarkMode 
+                            ? 'bg-slate-700 text-white border-slate-600' 
+                            : 'bg-white text-gray-900 border-gray-200'
+                        } border rounded-lg focus:ring-2 focus:ring-purple-500`}
+                        rows={4}
+                      />
+                    ) : (
+                      <input
+                        type={field.type}
+                        className={`w-full rounded-lg px-4 py-2 ${
+                          isDarkMode 
+                            ? 'bg-slate-700 text-white border-slate-600' 
+                            : 'bg-white text-gray-900 border-gray-200'
+                        } border rounded-lg focus:ring-2 focus:ring-purple-500`}
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
 
-            <div className="flex justify-end gap-4">
-              <button
-                type="button"
-                onClick={() => setIsAddingNew(false)}
-                className={`px-4 py-2 rounded-lg ${
-                  isDarkMode
-                    ? 'bg-slate-700 text-white hover:bg-slate-600'
-                    : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                }`}
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600"
-              >
-                Save Item
-              </button>
-            </div>
-          </form>
+              <div className="flex justify-end gap-4">
+                <button
+                  type="button"
+                  onClick={() => setIsAddingNew(false)}
+                  className={`px-4 py-2 rounded-lg ${
+                    isDarkMode
+                      ? 'bg-slate-700 text-white hover:bg-slate-600'
+                      : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
+                  }`}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600"
+                >
+                  Save Item
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
-    )}
+      )}
 
-    {/* Items List */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {items.map((item) => (
-        <div key={item.id} className={`${
-          isDarkMode ? 'bg-slate-800/50' : 'bg-white'
-        } rounded-xl overflow-hidden`}>
-          <img
-            src={item.image}
-            alt={item.name}
-            className="w-full h-48 object-cover"
-          />
-          <div className="p-4">
-            <div className="flex justify-between items-start mb-2">
-              <h3 className={`font-semibold ${
-                isDarkMode ? 'text-white' : 'text-gray-900'
-              }`}>{item.name}</h3>
-              <div className="flex space-x-2">
-                <button className={`p-2 rounded-lg ${
-                  isDarkMode ? 'hover:bg-slate-700' : 'hover:bg-gray-100'
-                }`}>
-                  <Edit className="w-5 h-5 text-blue-500" />
-                </button>
-                <button className={`p-2 rounded-lg ${
-                  isDarkMode ? 'hover:bg-slate-700' : 'hover:bg-gray-100'
-                }`}>
-                  <Trash className="w-5 h-5 text-red-500" />
-                </button>
+      {/* Items List */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {items.map((item) => (
+          <div key={item.id} className={`${
+            isDarkMode ? 'bg-slate-800/50' : 'bg-white'
+          } rounded-xl overflow-hidden`}>
+            <img
+              src={item.image}
+              alt={item.name}
+              className="w-full h-48 object-cover"
+            />
+            <div className="p-4">
+              <div className="flex justify-between items-start mb-2">
+                <h3 className={`font-semibold ${
+                  isDarkMode ? 'text-white' : 'text-gray-900'
+                }`}>{item.name}</h3>
+                <div className="flex space-x-2">
+                  <button className={`p-2 rounded-lg ${
+                    isDarkMode ? 'hover:bg-slate-700' : 'hover:bg-gray-100'
+                  }`}>
+                    <Edit className="w-5 h-5 text-blue-500" />
+                  </button>
+                  <button className={`p-2 rounded-lg ${
+                    isDarkMode ? 'hover:bg-slate-700' : 'hover:bg-gray-100'
+                  }`}>
+                    <Trash className="w-5 h-5 text-red-500" />
+                  </button>
+                </div>
               </div>
-            </div>
-            <div className="space-y-2">
-              <div className="flex justify-between">
-                <span className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>
-                  Price
-                </span>
-                <span className={isDarkMode ? 'text-white' : 'text-gray-900'}>
-                  ${item.price.toLocaleString()}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>
-                  Category
-                </span>
-                <span className={isDarkMode ? 'text-white' : 'text-gray-900'}>
-                  {item.category}
-                </span>
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>
+                    Price
+                  </span>
+                  <span className={isDarkMode ? 'text-white' : 'text-gray-900'}>
+                    ${item.price.toLocaleString()}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>
+                    Category
+                  </span>
+                  <span className={isDarkMode ? 'text-white' : 'text-gray-900'}>
+                    {item.category}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
 };
+
+export default Collections;
